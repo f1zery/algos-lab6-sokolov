@@ -204,28 +204,28 @@ COMMON_NOUNS = [
 
 max_wrong = len(HANGMAN) - 1
 
-word = choice(COMMON_NOUNS)  # Слово, которое нужно угадать
-so_far = "_" * len(word)  # Одна черточка для каждой буквы в слове, которое нужно угадать
-wrong = 0  # Количество неверных предположений, сделанных игроком
-used = []  # Буквы уже угаданы
+word = choice(COMMON_NOUNS) 
+so_far = "_" * len(word)  
+wrong = 0  
+used = []  
 
 while wrong < max_wrong and so_far != word:
-    print(HANGMAN[wrong])  # Вывод висельника по индексу
+    print(HANGMAN[wrong]) 
     print("\nВы использовали следующие буквы:\n", used)
     print("\nНа данный момент слово выглядит так:\n", so_far)
 
-    guess = input("\n\nВведите свое предположение: ")  # Пользователь вводит предполагаемую букву
+    guess = input("\n\nВведите свое предположение: ")  
 
     while guess in used:
-        print("Вы уже вводили букву", guess)  # Если буква уже вводилась ранее, то выводим соответствующее сообщение
-        guess = input("Введите свое предположение: ")  # Пользователь вводит предполагаемую букву
+        print("Вы уже вводили букву", guess)  
+        guess = input("Введите свое предположение: ") 
 
-    used.append(guess)  # В список использованных букв добавляется введённая буква
+    used.append(guess)  
 
-    if guess in word:  # Если введённая буква есть в загаданном слове, то выводим соответствующее сообщение
+    if guess in word: 
         print("\nДа!", guess, "есть в слове!")
         new = ""
-        for i in range(len(word)):  # В цикле добавляем найденную букву в нужное место
+        for i in range(len(word)):  
             if guess == word[i]:
                 new += guess
             else:
@@ -233,10 +233,10 @@ while wrong < max_wrong and so_far != word:
         so_far = new
 
     else:
-        print("\nИзвините, буквы \"" + guess + "\" нет в слове.")  # Если буквы нет, то выводим соответствующее сообщение
+        print("\nИзвините, буквы \"" + guess + "\" нет в слове.")  
         wrong += 1
 
-if wrong == max_wrong:  # Если игрок превысил кол-во ошибок, то его повесили
+if wrong == max_wrong:  
     print(HANGMAN[wrong])
     print("\nТы лох!")
 else:
